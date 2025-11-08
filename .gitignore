@@ -6,5 +6,40 @@ dist/
 wheels/
 *.egg-info
 
+# MacOS
+**/.DS_Store
+
 # Virtual environments
 .venv
+
+# Minecraft server binaries
+minecraft_server/*.jar
+minecraft_server/plugins/*.jar
+
+# Minecraft server setup / build temporary files
+minecraft_server/BuildData/
+minecraft_server/Bukkit/
+minecraft_server/CraftBukkit/
+minecraft_server/Spigot/
+minecraft_server/work/
+minecraft_server/apache-maven-*/
+minecraft_server/.java-version
+minecraft_server/BuildTools.log.txt
+eula.txt.bak
+
+# Minecraft server runtime files
+minecraft_server/bundler/
+minecraft_server/flat/
+minecraft_server/flat_nether/
+minecraft_server/flat_the_end/
+minecraft_server/logs/
+minecraft_server/banned-ips.json
+minecraft_server/banned-players.json
+minecraft_server/ops.json
+minecraft_server/usercache.json
+minecraft_server/whitelist.json
+minecraft_server/crash-reports/
+
+
+
+
