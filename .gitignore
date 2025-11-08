@@ -21,6 +21,7 @@ minecraft_server/BuildData/
 minecraft_server/Bukkit/
 minecraft_server/CraftBukkit/
 minecraft_server/Spigot/
+minecraft_server/RaspberryJuice/
 minecraft_server/work/
 minecraft_server/apache-maven-*/
 minecraft_server/.java-version

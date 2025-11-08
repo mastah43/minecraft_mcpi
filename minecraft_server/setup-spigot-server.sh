@@ -19,7 +19,7 @@ echo ""
 SPIGOT_VERSION="1.21.8"
 SPIGOT_JAR="spigot-${SPIGOT_VERSION}.jar"
 BUILDTOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
-RASPBERRYJUICE_VERSION="1.11"
+RASPBERRYJUICE_VERSION="1.12.1"
 RASPBERRYJUICE_URL="https://github.com/zhuowei/RaspberryJuice/releases/download/${RASPBERRYJUICE_VERSION}/raspberryjuice-${RASPBERRYJUICE_VERSION}.jar"
 RASPBERRYJUICE_JAR="raspberryjuice-${RASPBERRYJUICE_VERSION}.jar"
 
@@ -82,13 +82,18 @@ mkdir -p plugins
 echo "  ✓ plugins/ directory ready"
 echo ""
 
-# Step 5: Download RaspberryJuice plugin
+# Step 5: Buid RaspberryJuice plugin
 echo "[5/7] Installing RaspberryJuice plugin..."
 if [ -f "plugins/$RASPBERRYJUICE_JAR" ]; then
     echo "  ✓ RaspberryJuice plugin already exists"
 else
-    echo "  Downloading RaspberryJuice ${RASPBERRYJUICE_VERSION}..."
-    curl -L -o "plugins/$RASPBERRYJUICE_JAR" "$RASPBERRYJUICE_URL"
+    echo "  Building RaspberryJuice ${RASPBERRYJUICE_VERSION}..."
+    git clone https://github.com/zhuowei/RaspberryJuice
+    cd RaspberryJuice
+    sed -i.bak 's/<source>1\.7<\/source>/<source>1.8<\/source>/g' pom.xml
+    sed -i.bak 's/<target>1\.7<\/target>/<target>1.8<\/target>/g' pom.xml
+    mvn package
+    cp target/raspberryjuice-${RASPBERRYJUICE_VERSION}.jar ../plugins/
     echo "  ✓ RaspberryJuice plugin installed"
 fi
 echo ""
